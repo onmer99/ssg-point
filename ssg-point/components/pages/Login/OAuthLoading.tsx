@@ -31,7 +31,13 @@ const OAuthLoading = () => {
         console.log("유저데이터: ", data);
 
         if (data.code === 'S001') {
-          setToken(data.data.token);
+          fetch ('https://workjo.duckdns.org/api/v1/auth/', {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': data.data.token,
+            },
+          })
           router.push('/');
           
         } else {

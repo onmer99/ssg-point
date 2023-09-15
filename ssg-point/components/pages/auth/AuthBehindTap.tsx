@@ -2,7 +2,7 @@
 
 import { UserContext } from "@/app/signup/layout";
 import { useRouter } from "next/navigation";
-import React, { useState, SetStateAction, useContext } from "react";
+import React, { useState, useContext } from "react";
 
   const AuthBehindTap = ( props : { authNumber:string,pathName:string }) => {
 

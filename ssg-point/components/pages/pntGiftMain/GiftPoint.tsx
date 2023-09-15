@@ -33,7 +33,7 @@ function GiftPoint({userUuid,recName}:{
   const [point,setPoint] = useState<number>(0);
   const [usePointMessage,setUsePointMessage] = useState<boolean>(false);
   const handleOnClick = ( e : any) => {
-    console.log(e.target.name)
+
     if(e.target.name === "use"){
       setUsePointMessage(true)
       return
@@ -52,11 +52,9 @@ function GiftPoint({userUuid,recName}:{
         sendGiftUserData
       })
     }
-    console.log(sendGiftUserData)
-    console.log(typeof(sendGiftUserData.pointPassword))
+
     let res = await fetch("http://workjo.duckdns.org/api/v1/point/gifts/give",req)
     const data = await res.json();
-    console.log(data)
 
   }
   const handleOnChange = (e : React.ChangeEvent<HTMLInputElement>) => {
@@ -82,11 +80,8 @@ function GiftPoint({userUuid,recName}:{
       ...sendGiftUserData,
       [name]:value
     })
-    console.log(sendGiftUserData)
   }
   async function fetchPoint() {
-
-    console.log("window Onload ")
 
     let res = await fetch("http://workjo.duckdns.org/api/v1/point/simple-info",{
       method:"GET",
@@ -96,17 +91,15 @@ function GiftPoint({userUuid,recName}:{
     });
     const json = await res.json();
     if(res.ok){
-      console.log(json)
       setPoint(json.data.usableTotalPoint)
-      console.log(point)
     }
   }
   
   return (
     <div className='py-5'>
       <p className='text-sm mb-2 text-[#EA035C]'><b>포인트 받으실 분을 확인하세요.</b></p>
-      <div className='relative w-full border-[2px] border-[#EA035C] h-[90px] rounded-[8px]'>
-        <p className='absolute top-[22px] left-[20px] text-xs text-gray-400'>선물 받을 분:</p><br/>
+      <div className='drop-shadow-xl relative w-full border-[2px] border-[#EA035C] h-[90px] rounded-[8px]'>
+        <p className='absolute top-[22px] left-[20px] text-xs text-black'>선물 받을 분:</p><br/>
         <p className='absolute top-[28px] left-[20px] pt-3'>{userName}</p>
         {/* 유저의 ID도 표시되는데 API에 ID가 없어서 일단 넘어가겠습니다ㅜㅜ */}
       </div>
@@ -120,7 +113,7 @@ function GiftPoint({userUuid,recName}:{
           <input
             name='point'
             onChange={handleOnChange}
-            className='text-sm border-[1px] border-gray-300 rounded-[8px] w-full h-[52px] pb-2'
+            className='text-sm border-[1px] border-gray-400 px-2 rounded-[8px] w-full h-[52px]'
           />
         </li> 
         <li className='py-2'>
@@ -129,7 +122,7 @@ function GiftPoint({userUuid,recName}:{
             type='password'
             name='pointPassword'
             onChange={handleOnChange}
-            className='text-sm border-[1px] border-gray-300 rounded-[8px] w-full h-[52px] pb-2'
+            className='text-sm border-[1px] border-gray-400 px-2 rounded-[8px] w-full h-[52px]'
           />
           <span className='text-xs text-gray-500'>포인트 비밀번호가 기억나지 않으세요?  </span>
         </li>
@@ -160,7 +153,7 @@ function GiftPoint({userUuid,recName}:{
             <input 
             name="message"
             onChange={handleOnChange}
-            className='mt-5 border-[1px] rounded-[8px] border-gray-500 w-full h-[200px]'
+            className='px-2 mt-5 border-[1px] rounded-[8px] border-gray-500 w-full h-[200px]'
             /> 
             : ""
           }

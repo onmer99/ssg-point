@@ -209,7 +209,7 @@ async function pointDataFetch() {
               
               { 
                 emptyPointHistory ? 
-                <div className="w-full flex justify-center h-[500px]">
+                <div className="w-full flex justify-center h-full">
                   <CreatePointComponent
                     id={selectPointHistory}
                     data={pointList}

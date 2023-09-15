@@ -73,21 +73,21 @@ function GiftMainBody() {
       <div className='px-5 my-10'>
         <h3 className='hidden'>포인트 선물하기</h3>
         <p className='text-xl mt-6 mb-3'>선물하기</p>
-        <span className='text-sm text-gray-500'>신세계포인트를 선물 받으실 분의<br/>
+        <span className='text-sm text-gray-500 '>신세계포인트를 선물 받으실 분의<br/>
               정보를 정확하게 입력해주세요.</span>
         <input
         type='text'
         onChange={handleOnChange}
         name='recPhone'
         placeholder='  -없이 휴대폰 번호를 입력해주세요.'
-        className='text-sm border-[1px] divide-[#e5e7eb] rounded-[8px] w-full h-[52px] mt-8 mb-2'
+        className='text-sm border-[1px] border-gray-400 px-2 rounded-[8px] w-full h-[52px] mt-8 mb-2'
         />      
         <input
         type='text'
         onChange={handleOnChange}
         name='recName'
         placeholder='  실명을 정확하게 입력해 주세요.'
-        className='text-sm border-[1px] divide-[#e5e7eb] rounded-[8px] w-full h-[52px] pb-2'
+        className='text-sm border-[1px] border-gray-400 px-2 rounded-[8px] w-full h-[52px]'
         />      
         <button 
           className='bg-black w-full text-white my-10 rounded-[8px] h-[52px]'

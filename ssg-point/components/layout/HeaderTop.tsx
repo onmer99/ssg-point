@@ -9,7 +9,6 @@ import { pageTitle } from '@/data/pageTitle'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 import Swal from 'sweetalert2'
-import { AppContext } from "@/app/layout";
 import { signOut, useSession } from 'next-auth/react'
 import CustomBarcode from '../ui/CustomBarcode'
 
@@ -20,7 +19,6 @@ function HeaderTop() {
   const pathname = usePathname();
   const router = useRouter();
   const session = useSession();
-  const point = useContext(AppContext);
   console.log(session)
 
   const handleSideMenu = () => {
@@ -89,7 +87,6 @@ function HeaderTop() {
                 <>
                 <CustomBarcode value={session.data?.user.data?.uuid} options={{ width: 0.1, height: 10, displayValue:false}}/>
                 <p className='inline-block text-xs' onClick={handleLogout}>
-                {session.data?.user.data.name} 님 &nbsp; {point.totalPoint} &nbsp;
                 </p>
                 
                 <span className='inline-block'>

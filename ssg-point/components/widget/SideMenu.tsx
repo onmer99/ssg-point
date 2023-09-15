@@ -11,7 +11,6 @@ import {
   menuList,
 } from "@/data/SideMenuData";
 import { signOut, useSession } from "next-auth/react";
-import { AppContext } from "@/app/layout";
 
 const favUrl =
   "https://mycloudmembership-prd.s3.amazonaws.com/shinsegaepoint/public/shinsegaepoint-ext/images/menu-images-renewal/menu_big_";
@@ -23,7 +22,6 @@ function SideMenu(props: {
   const session = useSession();
   console.log(session.data)
   const { isOpened, setIsOpened } = props;
-  const point = useContext(AppContext);
 
   /** 참고: Back에서 받아오는 나의 즐겨찾기 목록 state */ 
   // const [myFav, setMyFav] = useState<>()
@@ -63,7 +61,6 @@ function SideMenu(props: {
               <p className="flex itmes-center mt-[16px] text-[20px] font-bold leading-6">
                 {/* {user.point} 참고 : 유저의 포인트 정보 불러온 후 표시 */}
                 {/* {point.totalPoint} */}
-                &nbsp; {point.totalPoint}
                 <Image
                   alt="point"
                   src={
