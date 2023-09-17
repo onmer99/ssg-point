@@ -135,7 +135,7 @@ const KakaoMap = () => {
 
             // 지도 내 매장 정보 가져오기
             console.log(`현재 지도 bound sw_lat=${bound_sw.getLat()}&ne_lat=${bound_ne.getLat()}&sw_lng=${bound_sw.getLng()}&ne_lng=${bound_ne.getLng()} `)
-            fetch(`http://localhost:8000/api/v1/store/find-map?sw_lat=${bound_sw.getLat()}&ne_lat=${bound_ne.getLat()}&sw_lng=${bound_sw.getLng()}&ne_lng=${bound_ne.getLng()}`, {
+            fetch(`https://workjo.duckdns.org/api/v1/store/find-map?sw_lat=${bound_sw.getLat()}&ne_lat=${bound_ne.getLat()}&sw_lng=${bound_sw.getLng()}&ne_lng=${bound_ne.getLng()}`, {
                 method: 'GET',
                 headers: {
                   'Content-type':'application/json'
