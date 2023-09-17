@@ -9,7 +9,7 @@ import { pointDataType } from "@/types/pointDataType";
 
 function PointMainBody() {
 
-  const reqUrl ='http://workjo.duckdns.org'
+  const reqUrl ='https://workjo.duckdns.org'
   // const reqLocalUrl = "http://10.10.10.116:8000"
   const sessionData = useSession().data;
   const token = sessionData?.user.data.token;

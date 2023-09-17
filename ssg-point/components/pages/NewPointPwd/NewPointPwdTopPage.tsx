@@ -44,7 +44,7 @@ function NewPointPwdTopPage() {
       })
     }
     console.log(req)
-    let res = await fetch('http://workjo.duckdns.org/api/v1/user/point-pwd',req)
+    let res = await fetch('https://workjo.duckdns.org/api/v1/user/point-pwd',req)
 
     const response = await res.json();
     if(res.ok){
