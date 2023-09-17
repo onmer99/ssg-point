@@ -15,7 +15,7 @@ const AuthBehindTap = ( props : { authNumber:string,pathName:string }) => {
     
     const [errText,setErrText] = useState<string>("");
 
-    const reqUrl = 'http://workjo.duckdns.org'
+    const reqUrl = 'https://workjo.duckdns.org'
     const reqLocalUrl = 'http://10.10.10.103:8000'
     async function sameReqNumHandler() {
     

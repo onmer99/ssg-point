@@ -25,7 +25,7 @@ interface existByIdMessageType {
   const router = useRouter();
   const user = useContext(UserContext);
 
-  const reqUrl = 'http://workjo.duckdns.org/api/v1'
+  const reqUrl = 'https://workjo.duckdns.org/api/v1'
 
   const [isView, setIsView] = useState<boolean>(false);
 

@@ -15,7 +15,7 @@ function PhoneAuthBody( props:{pathName: string} ) {
 
     const user = useContext(UserContext);
     const path = props.pathName;
-    const reqUrl = "http://workjo.duckdns.org"
+    const reqUrl = "https://workjo.duckdns.org"
 
     // const reqUrl = "http://10.10.10.103:8000"
 

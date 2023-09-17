@@ -25,7 +25,7 @@ function GiftMainBody() {
     
   }
 
-  const findUUIDUrl = "http://workjo.duckdns.org/api/v1/user/find-for-gift"
+  const findUUIDUrl = "https://workjo.duckdns.org/api/v1/user/find-for-gift"
   const data = useSession();
   const token = data.data?.user.data.token;
   
@@ -49,8 +49,7 @@ function GiftMainBody() {
       })
   }
 
-    console.log(req)
-
+      console.log(req)
       let response = await fetch(findUUIDUrl,req)
       
       if(response.ok){

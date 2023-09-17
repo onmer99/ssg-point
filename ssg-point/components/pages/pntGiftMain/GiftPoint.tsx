@@ -1,6 +1,7 @@
 'use client'
 import { useSession } from 'next-auth/react';
 import React, { useEffect, useState } from 'react'
+import Swal from 'sweetalert2';
 
 function GiftPoint({userUuid,recName}:{
   userUuid:string,
@@ -40,32 +41,62 @@ function GiftPoint({userUuid,recName}:{
     }
     setUsePointMessage(false)
   }
-  async function handleOnFetch() {
-    const req = {
+
+  const [sendPoint,setSendPoit] = useState<boolean>(false);
+
+  async function handleOnFetch( e : React.MouseEvent<HTMLButtonElement>) {
+
+    if(point < sendGiftUserData.point){
+      Swal.fire({
+        text:"포인트가 부족합니다!",
+        icon: "error",
+        toast: false,
+        position: "center",
+        showConfirmButton: false,
+        timer: 1500,
+        timerProgressBar: true,
+        customClass: {
+          container: "my-swal",
+        },
+      })
+      return
+    }
+    let res = await fetch("https://workjo.duckdns.org/api/v1/point/gifts/give",{
       method:"POST",
       headers:{
         'Content-type':'application/json',
         'Authorization': `Bearer ${token}`,
-        // 'Access-Control-Allow-Origin':"*"
       },
       body:JSON.stringify({
-        sendGiftUserData
+        "message":sendGiftUserData.message,
+        "point":sendGiftUserData.point,
+        "pointPassword":sendGiftUserData.pointPassword,
+        "toUserUuid":sendGiftUserData.toUserUuid,
+        "toUserName":sendGiftUserData.toUserName
       })
+    })
+    if(res.ok){
+      Swal.fire({
+        text:"따뜻한 마음과 함께 포인트 선물이 완료되었어요.",
+        icon: "success",
+        toast: false,
+        position: "center",
+        showConfirmButton: false,
+        timer: 1500,
+        timerProgressBar: true,
+        customClass: {
+          container: "my-swal",
+        },
+      })
+      setSendPoit(!sendPoint)
     }
-
-    let res = await fetch("http://workjo.duckdns.org/api/v1/point/gifts/give",req)
     const data = await res.json();
+    console.log(data)
 
   }
   const handleOnChange = (e : React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
-    // let sendData:sendGiftUserDataType = {
-    //   message:"",
-    //   point:0,
-    //   pointPassword:"",
-    //   toUserUuid:userUuid,
-    //   toUserName:recName
-    // }
+
     const {name,value} = e.target
     
     if(name === "point"){
@@ -83,7 +114,7 @@ function GiftPoint({userUuid,recName}:{
   }
   async function fetchPoint() {
 
-    let res = await fetch("http://workjo.duckdns.org/api/v1/point/simple-info",{
+    let res = await fetch("https://workjo.duckdns.org/api/v1/point/simple-info",{
       method:"GET",
       headers:{
         'Authorization': `Bearer ${token}`
@@ -94,7 +125,11 @@ function GiftPoint({userUuid,recName}:{
       setPoint(json.data.usableTotalPoint)
     }
   }
-  
+  useEffect(() => {
+    
+  fetchPoint()
+
+  },[sendPoint])
   return (
     <div className='py-5'>
       <p className='text-sm mb-2 text-[#EA035C]'><b>포인트 받으실 분을 확인하세요.</b></p>
