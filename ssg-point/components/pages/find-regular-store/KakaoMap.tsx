@@ -23,7 +23,7 @@ const KakaoMap = () => {
   const [mylocation, setMylocation] = useState<coordinate>();
   // const [mapBound, setMapBound] = useState<bound>();
   mapScript.async = true;
-  mapScript.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=3fa18601d9ff2627a9c2a783631d72ec&autoload=false&libraries=services,clusterer,drawing`;
+  mapScript.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=30825d7ff55d14a818299c266e641081&autoload=false&libraries=services,clusterer,drawing`;
   document.head.appendChild(mapScript);
 
   // 매장들 정보
@@ -135,7 +135,7 @@ const KakaoMap = () => {
 
             // 지도 내 매장 정보 가져오기
             console.log(`현재 지도 bound sw_lat=${bound_sw.getLat()}&ne_lat=${bound_ne.getLat()}&sw_lng=${bound_sw.getLng()}&ne_lng=${bound_ne.getLng()} `)
-            fetch(`https://workjo.duckdns.org/api/v1/store/find-map?sw_lat=${bound_sw.getLat()}&ne_lat=${bound_ne.getLat()}&sw_lng=${bound_sw.getLng()}&ne_lng=${bound_ne.getLng()}`, {
+            fetch(`http://localhost:8000/api/v1/store/find-map?sw_lat=${bound_sw.getLat()}&ne_lat=${bound_ne.getLat()}&sw_lng=${bound_sw.getLng()}&ne_lng=${bound_ne.getLng()}`, {
                 method: 'GET',
                 headers: {
                   'Content-type':'application/json'
