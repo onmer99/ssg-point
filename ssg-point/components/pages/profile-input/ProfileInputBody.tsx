@@ -171,7 +171,7 @@ interface existByIdMessageType {
             onChange={handleOnChange}
           />          
           <button 
-            className="h-[px] w-1/4 border rounded-[6px] ml-3 border-gray-400 text-[15px]"
+            className="w-1/4 border rounded-[6px] ml-3 border-gray-400 text-[15px]"
             type="button"
             onClick={existById}
             >

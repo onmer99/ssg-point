@@ -81,7 +81,7 @@ function HeaderTop() {
     if (isOpened) {
       setIsOpened(!isOpened)
     }
-  },[pathname])
+  },[pathname,session])
 
   return (
     <>
