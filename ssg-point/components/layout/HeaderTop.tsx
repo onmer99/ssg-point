@@ -1,6 +1,6 @@
 'use client'
 import Link from 'next/link'
-import React, { useEffect, useState,useContext } from 'react'
+import React, { useEffect, useState } from 'react'
 import HeaderUserStatus from './HeaderUserStatus'
 import SideMenu from '../widget/SideMenu'
 import Logo from '../ui/header/Logo'
@@ -19,6 +19,9 @@ function HeaderTop() {
   const pathname = usePathname();
   const router = useRouter();
   const session = useSession();
+  const token = session.data?.user.data.token;
+  const [totalPoint,setTotalPoint] = useState<number>(0);
+  const [topName, setTopName] = useState<string>("");
   console.log(session)
 
   const handleSideMenu = () => {
@@ -26,6 +29,23 @@ function HeaderTop() {
     console.log(isOpened)
   }
 
+  async function handleTopPoint() {
+    let res = await fetch('https://workjo.duckdns.org/api/v1/point/simple-info',{
+      method:"GET",
+      headers:{
+        'Authorization': `Bearer ${token}`
+      }
+    })
+    console.log(session.data?.user.data.name)
+    setTopName(session.data?.user.data.name)
+    if(res.ok){
+      const res2 = await res.json();
+      setTotalPoint(res2.data.usableTotalPoint);
+      console.log(res2.data)
+    }
+ 
+  }
+  
   const handleLogout = () => {
     Swal.fire({
       text: "로그아웃 하시겠습니까?",
@@ -44,8 +64,10 @@ function HeaderTop() {
       }
     })
   }
-
   useEffect(() => {
+
+    handleTopPoint();
+
     const PathName = pathname.split('/').length
     console.log(pathname.split('/'))
     
@@ -87,9 +109,9 @@ function HeaderTop() {
                 <>
                 <CustomBarcode value={session.data?.user.data?.uuid} options={{ width: 0.1, height: 10, displayValue:false}}/>
                 <p className='inline-block text-xs' onClick={handleLogout}>
+                  {topName} 님&#160;&#160;{totalPoint}
                 </p>
-                
-                <span className='inline-block'>
+                <span className='inline-block pl-2'>
                   <Image src="/assets/images/etc/point.png" alt="포인트" height={15} width={15}/>
                 </span>
                 </>

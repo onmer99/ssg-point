@@ -1,3 +1,5 @@
+import Image from "next/image"
+
 function CheckStatus(
   {
       checked, 
@@ -25,8 +27,8 @@ return (
           type="checkbox" 
           checked={checked} 
           onChange={()=>handler(checkId, !checked)} 
-          className={`border border-gray-300 rounded-[50%] appearance-none cursor-pointer checked:bg-black checked:border-transparent`}
-          style={{ width: `${size}px`, height: `${size}px` }} 
+          className="box-content w-5 h-5 rounded-full checked:bg-black appearance-none border border-black cursor-pointer checked:bg-[url('/assets/images/login/check.png')] checked:bg-[length:12px_10px] checked:bg-no-repeat checked:bg-center"
+          style={{ width: `${size}px`, height: `${size}px` } } 
       />
       <label htmlFor={label}>{label}</label>
   </div>

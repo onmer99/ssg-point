@@ -14,7 +14,7 @@ function Page(){
 
     return(
         <>
-            <section className="pt-20">
+            <section className="pt-20 px-7">
                 <AuthHeaderTop/>
                 <AuthHeaderBottom
                     typeList={PhoneCardSelectBoxData}

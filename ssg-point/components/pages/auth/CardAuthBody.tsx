@@ -4,7 +4,7 @@ function CardAuthBody() {
 
   return (  
     <>
-    <div className='px-5 pt-4'>
+    <div className='pt-4'>
       <div className="flex justify-center text-xl">
           <p className="my-[50px]">
             보유하신 <b>신용/체크카드</b>로<br/>

@@ -17,7 +17,7 @@ const handleClick = (e : any) => {
   
   return(
     <>
-        <div className='mt-10 mx-5 flex'>
+        <div className='mt-10 flex'>
           
             {
               typeList.map( item => (
